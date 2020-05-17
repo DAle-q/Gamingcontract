@@ -1,4 +1,3 @@
-(define-constant dicegame 'ST398K1WZTBVY6FE2YEHM6HP20VSNVSSPJTW0D53M.dicegame)
 (define-data-var target int 0)
 (define-data-var isTargetSet bool false)
 (define-data-var player1 int 0)
