@@ -153,7 +153,7 @@ describe("dice game contract test suite", () => {
       });
 
 
-      describe("dice game contract test suite test payout method", () => {
+      describe("dice game contract test suite test payout method in mocknet", () => {
        it("should pay winner", async () => {
         const keyscontract = JSON.parse(fs.readFileSync("./keys.json").toString());
         const keyswinner = JSON.parse(fs.readFileSync("./keys2.json").toString());
