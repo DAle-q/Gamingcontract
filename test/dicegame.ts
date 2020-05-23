@@ -193,7 +193,7 @@ describe("dice game contract test suite", () => {
       functionName: "announcewinner",
       functionArgs: [],
       fee,
-      senderKey: secretKeyBuyer,
+      senderKey: secretKeySender,
       nonce: new BigNum(1),
       network,
       postConditions: [
