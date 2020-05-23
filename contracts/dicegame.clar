@@ -20,12 +20,12 @@
 
 
 ;;This method is to get Flag value for isTargetSet 
-;;Returns : int
+;;Returns : boolean
    (define-public (getFlag)
    (ok (var-get isTargetSet)))
 
 ;;This method is to set target
-;;Here we are setting initial target value as 10.
+;;Returns:int
 (define-public (setTarget)
    (begin
      (var-set target (+ (var-get target) 10))
@@ -54,7 +54,7 @@
 
 ;;This method is to set Flag value as true for isTargetSet
 ;;First we will check if target is set.If target is set, then we will mark the flag as true.
-;;Returns:Boolean
+;;Returns:boolean
    (define-public (setFlag)
    (begin
    (if (not (is-eq (var-get target) 0)) 1 0)
@@ -66,7 +66,6 @@
 
 
 ;;This method is to set the Player1 Bet value 
-;;Here we are setting the bet value as 10
 ;;Returns:int
 (define-public (setBetplayer1)
     (begin
@@ -84,7 +83,6 @@
 
   
 ;;This method is to set the Player2 Bet value 
-;;Here we are getting the bet value as 20
 ;;Returns :int
 (define-public (setBetplayer2)
     (begin
@@ -141,22 +139,22 @@
 )
 )
 
- ;;In this method we are getting the winner amount 
+ ;;In this method we are getting the winner value 
  ;;Returns :int
   (define-public (getwinner)
    (ok (var-get winner)))
 
 ;;This method is used to find if winner is selected
 ;;If winner value is not equal to 0,print "Winner is selected" 
-;;Also transfer the units equivalent to target from contract to winner using methos payout-winner
+;;Also transfer the units equivalent to target from contract to winner using method payout-winner
 ;;If winner value is still 0, then say "This round is still open"
-;;Returns :message
+;;Returns :String
 
 (define-public (isWinnerselected)
 (if (not (is-eq (var-get winner) 0)) 
 (begin
 
-;;(payout-winner) method is commented currently and replica of this method announcewinner is created to test in mocknet
+;;(payout-winner) method is commented currently .This has to be tested when Argon phase is live and replica of this method announcewinner is created to test in mocknet.
    ;; (ok (payout-winner))
 (ok "Winner is selected")
 )
@@ -186,7 +184,7 @@
   ))))
 
 
-;;Temporary method to test mocknet
+;;Temporary method to test STX transfer in mocknet
 (define-private (payout-winner1)
   (unwrap-panic (as-contract (stx-transfer? u10 dicegame player1add)
   )))
