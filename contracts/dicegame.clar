@@ -1,3 +1,9 @@
+;;constants
+(define-constant dicegame 'ST260DYV52QGC4P8MGB8PPM40VBXJ6PS8AE2AS9G0.dicegame)
+(define-constant player1add 'ST3CTE94HNTJ8R0E3C4CY4RWJ94KTMC0K8815KAH6)
+(define-constant player2add 'ST26FVX16539KKXZKJN098Q08HRX3XBAP541MFS0P)
+
+;;variables
 (define-data-var target int 0)
 (define-data-var isTargetSet bool false)
 (define-data-var isBetSet bool false)
@@ -5,9 +11,6 @@
 (define-data-var player2 int 0)
 (define-data-var winner int 0)
 (define-data-var amount uint u10)
-(define-constant dicegame 'ST260DYV52QGC4P8MGB8PPM40VBXJ6PS8AE2AS9G0.dicegame)
-(define-constant player1add 'ST3CTE94HNTJ8R0E3C4CY4RWJ94KTMC0K8815KAH6)
-(define-constant player2add 'ST26FVX16539KKXZKJN098Q08HRX3XBAP541MFS0P)
 (define-data-var winneradd principal 'ST3CTE94HNTJ8R0E3C4CY4RWJ94KTMC0K8815KAH6)
 
 ;;This method is to get Target value
