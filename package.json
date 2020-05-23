@@ -1,11 +1,11 @@
 {
-  "name": "clarity-counter",
-  "version": "0.0.0",
+  "name": "dicegame",
+  "version": "1.0.0",
   "author": {
-    "name": "",
-    "email": ""
+    "name": "Harini Rajan",
+    "email": "harini@blocksurvey.org"
   },
-  "repository": "",
+  "repository": "https://github.com/HariniRajan397/Gamingcontract.git",
   "private": true,
   "engines": {
     "node": ">=10"
