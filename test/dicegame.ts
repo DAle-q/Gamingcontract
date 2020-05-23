@@ -167,8 +167,8 @@ describe("dice game contract test suite", () => {
         const price = 10;
     
         var fee = new BigNum(5289);
-        const secretKeyBuyer = keyscontract.secretKey;
-        const secretKeySeller = keyswinner.secretKey;
+        const secretKeySender = keyscontract.secretKey;
+        const secretKeyWinner = keyswinner.secretKey;
         const network = new StacksTestnet();
         const STACKS_API_URL = "http://127.0.0.1:20443";
         network.coreApiUrl = STACKS_API_URL;
@@ -177,7 +177,7 @@ describe("dice game contract test suite", () => {
           contractName,
           codeBody,
           fee,
-          senderKey: secretKeyBuyer,
+          senderKey: secretKeySender,
           nonce: new BigNum(0),
           network,
         });
