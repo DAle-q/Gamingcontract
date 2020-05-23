@@ -15,7 +15,7 @@ npm install
 
 npm run-script dicegame
 
-### Also check out original CLarity smart contracts tutorial in https://github.com/blockstack/clarity-js-sdk/tree/master/packages/clarity-tutorials
+### Also check out original Clarity smart contracts tutorial in https://github.com/blockstack/clarity-js-sdk/tree/master/packages/clarity-tutorials
 
 
 
