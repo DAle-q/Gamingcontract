@@ -2,6 +2,7 @@
 (define-constant dicegame 'ST260DYV52QGC4P8MGB8PPM40VBXJ6PS8AE2AS9G0.dicegame)
 (define-constant player1add 'ST3CTE94HNTJ8R0E3C4CY4RWJ94KTMC0K8815KAH6)
 (define-constant player2add 'ST26FVX16539KKXZKJN098Q08HRX3XBAP541MFS0P)
+(define-constant err-min-transfer u1)
 
 ;;variables
 (define-data-var target int 0)
@@ -72,8 +73,7 @@
         (if (is-eq (var-get isTargetSet) true) 1 0)
         (begin
         (var-set player1 (+ (var-get player1) 10))
-       ;; (ok (checkifIwon (player1))))
-        (ok (var-get player1)))))
+          (ok (var-get player1)))))
 
     
 ;;In this method we are getting Player 1 Bet amount
@@ -97,7 +97,7 @@
    (ok (var-get player2)))
 
 ;;This method is used to get winner 
-;;Condition is check if player1 , player2 and target value is the same 
+;;Condition is: check if player1 , player2 and target value is the same 
 ;;If the player1, player2 and target value is not equal, first we will check player1 value and target value
 ;;IF both are same , then set winner value as player 1 value 
 ;;If player1 value and target value is not same, then check player2 and target value 
@@ -146,45 +146,26 @@
 
 ;;This method is used to find if winner is selected
 ;;If winner value is not equal to 0,print "Winner is selected" 
-;;Also transfer the units equivalent to target from contract to winner using method payout-winner
 ;;If winner value is still 0, then say "This round is still open"
 ;;Returns :String
-
 (define-public (isWinnerselected)
 (if (not (is-eq (var-get winner) 0)) 
 (begin
-
-;;(payout-winner) method is commented currently .This has to be tested when Argon phase is live and replica of this method announcewinner is created to test in mocknet.
-   ;; (ok (payout-winner))
 (ok "Winner is selected")
 )
 (ok "This round is still open. Players can proceed to bet")
  )
 )
 
-
-;;Temporary method to check STX transfer in mocknet
-(define-public (announcewinner)
-(if (is-eq (var-get winner) 0)
-(begin
-    (ok (payout-winner1))
-    (ok true)
-)
-(ok false)
-)
-)
-
 ;;This method is used to transfer STX from contract to the winner
 ;;Principal :contract
 ;;Receiver principal :winner
-;;Amount :STX unit equivalent to target amount
-
-(define-private (payout-winner)
-  (unwrap-panic (as-contract (stx-transfer? (var-get amount) dicegame (var-get winneradd)
-  ))))
-
-
-;;Temporary method to test STX transfer in mocknet
-(define-private (payout-winner1)
-  (unwrap-panic (as-contract (stx-transfer? u10 dicegame player1add)
-  )))
+;;Amount :STX unit equivalent to target amount 
+    (define-public (transfer)
+  (begin
+    (if (> (var-get amount) u0)
+      (ok (stx-transfer? (var-get amount) tx-sender (var-get winneradd)) )
+       (err err-min-transfer)
+    )
+  )
+)
